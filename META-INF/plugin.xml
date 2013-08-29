@@ -4,14 +4,14 @@
     <description><![CDATA[
         <p>Magento-idea plugin (Fork magicento)</p>
   ]]></description>
-    <!--<idea-version since-build="117.105"/>-->
-    <idea-version since-build="129.196"/>
+    <idea-version since-build="117.100"/>
+    <!--<idea-version since-build="129.196"/>-->
 
     <depends>com.intellij.modules.lang</depends>
     <depends>com.jetbrains.php</depends>
     <depends>com.intellij.modules.platform</depends>
 
-    <version>0.9.0</version>
+    <version>0.9.1</version>
 
     <change-notes>
         <![CDATA[
