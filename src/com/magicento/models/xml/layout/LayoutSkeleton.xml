@@ -1,0 +1,35 @@
+<!--We are not using this skeleton for the layout, leave it just for compatibility-->
+<layout>
+    <___>
+        <block>
+            <___>
+                <block>
+                    <action>
+                        <___/>
+                    </action>
+                </block>
+                <action>
+                    <___/>
+                </action>
+            </___>
+            <block>
+                <action>
+                    <___/>
+                </action>
+            </block>
+            <action>
+                <___/>
+            </action>
+        </block>
+        <reference>
+            <block></block>
+            <action>
+                <___/>
+            </action>
+            <___></___>
+        </reference>
+        <update/>
+        <remove/>
+        <___></___>
+    </___>
+</layout>

@@ -1,0 +1,123 @@
+<idea-plugin version="2" url="https://github.com/johna1203/Magicento">
+    <name>Magento-idea</name>
+    <vendor email="johnathan@kodokux.com" url="http://www.kodokux.com">Kodokux</vendor>
+    <description><![CDATA[
+        <p>Magento-idea plugin (Fork magicento)</p>
+  ]]></description>
+    <!--<idea-version since-build="117.105"/>-->
+    <idea-version since-build="129.196"/>
+
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.jetbrains.php</depends>
+    <depends>com.intellij.modules.platform</depends>
+
+    <version>0.9.0</version>
+
+    <change-notes>
+        <![CDATA[
+        <p>Magento-idea plugin (Fork magicento)</p>
+      ]]>
+    </change-notes>
+
+
+    <application-components>
+        <!-- Add your application components here -->
+        <component>
+            <implementation-class>com.magicento.MagicentoApplicationComponent</implementation-class>
+        </component>
+    </application-components>
+
+    <project-components>
+        <!-- Add your project components here -->
+        <component>
+            <implementation-class>com.magicento.MagicentoProjectComponent</implementation-class>
+        </component>
+    </project-components>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="MagicentoAction" class="com.magicento.MagicentoAction" text="Magicento"
+                description="Magento magic global and context aware action">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="alt M"/>
+        </action>
+        <action id="GotoMagentoClass" class="com.magicento.actions.GotoMagentoClassAction" text="Go to Magento Class"
+                description="Go to magento class declaration"/>
+        <action id="AddVarPhpDoc" class="com.magicento.actions.AddVarPhpDocAction" text="Add @var"
+                description="Add @var doc for getting autocomplete"/>
+        <action id="GetStoreConfig" class="com.magicento.actions.GetStoreConfigAction"
+                text="Get Store Config" description="show the store config value"/>
+        <action id="EvaluateInMagento" class="com.magicento.actions.EvaluateInMagentoAction"
+                text="Evaluate in Magento" description="evaluates the selected text/code in magento context"/>
+        <action id="GotoClassesOfFactory" class="com.magicento.actions.GotoClassesOfFactoryAction"
+                text="Go to Classes of Factory" description="Find models, blocks and helpers matching the factory "/>
+        <action id="SetMagePath" class="com.magicento.actions.SetMagePathAction" text="Set Path to Mage.php"
+                description="set path to magento"/>
+        <action id="SetStore" class="com.magicento.actions.SetStoreAction" text="Set Store"
+                description="set magento store (used for evaluating code in magento)"/>
+        <action id="CopyTemplate" class="com.magicento.actions.CopyTemplateAction" text="Copy Template"
+                description="copy template to another package/theme"/>
+        <action id="CreateModule" class="com.magicento.actions.CreateModuleAction" text="Create Module"
+                description="create new module with skeleton files"/>
+        <action id="ToggleTemplateHints" class="com.magicento.actions.ToggleTemplateHintsAction"
+                text="Toggle Template Hints"
+                description="enable/disable template hints in magento (included admin template hints)"/>
+        <action id="CompareWithOriginal" class="com.magicento.actions.CompareWithOriginalAction"
+                text="Compare with Original" description="compare current file with original from magento"/>
+        <action id="RemoveFromCoreResource" class="com.magicento.actions.RemoveFromCoreResourceAction"
+                text="Remove this installer from core resource table"
+                description="Reset the version of this installer to the previous one so the installer is executed again in Magento"/>
+        <action id="GoToBlockFromTemplate" class="com.magicento.actions.GoToBlockFromTemplateAction" text="Go to Block"
+                description="go to block of current template"/>
+        <action id="AddVarThisToTemplate" class="com.magicento.actions.AddVarThisToTemplateAction" text="Add @var $this"
+                description="add @var $this searching the blocks of the current template"/>
+        <action id="FlushCache" class="com.magicento.actions.FlushCacheAction" text="Flush Cache"
+                description="flush magento and storage cache"/>
+        <action id="RewriteClass" class="com.magicento.actions.RewriteClassAction" text="Rewrite Class"
+                description="rewrite this class in the selected module"/>
+        <action id="GotoTemplateFromBlock" class="com.magicento.actions.GotoTemplateFromBlockAction"
+                text="Go to template from Block" description="Go to templates using this Block"/>
+        <action id="GoToBlockDefinitionInLayout" class="com.magicento.actions.GoToBlockDefinitionInLayoutAction"
+                text="Goto block definition in layout" description="go to block tag definition in layout xml"/>
+        <action id="MagicentoTranslateText" class="com.magicento.actions.TranslateTextAction" text="Translate Text"
+                description="wrap selected text with $this->__()"/>
+        <action id="AddTranslation" class="com.magicento.actions.AddTranslationAction" text="Add Translation"
+                description="add translation for this text to the selected csv file"/>
+        <action id="RewriteController" class="com.magicento.actions.RewriteControllerAction" text="Rewrite Controller"/>
+        <action id="CreatePhpStormMetaNamespace" class="com.magicento.actions.CreatePhpStormMetaNamespaceAction"
+                text="Create PHPSTORM_META namespace"
+                description="creates a php file in project root used by PHPStorm (+6.x) for resolving factories automatically"/>
+        <action id="AddFactoryToPhpStormMetaNamespace"
+                class="com.magicento.actions.AddFactoryToPhpStormMetaNamespaceAction"
+                text="Add Factory to PHPSTORM_META Namespace"
+                description="Search the corresponding class for the current factory and adds it to PHPSTORM_META Namespace"/>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <!--<applicationConfigurable instance="com.magicento.ui.forms.MagicentoSettingsForm"></applicationConfigurable>-->
+        <projectConfigurable instance="com.magicento.ui.forms.MagicentoSettingsForm"></projectConfigurable>
+        <completion.contributor language="XML"
+                                implementationClass="com.magicento.extensions.MagicentoXmlCompletionContributor"/>
+        <completion.contributor language="PHP"
+                                implementationClass="com.magicento.extensions.MagicentoPhpCompletionContributor"
+                                order="first"/>
+        <projectService serviceImplementation="com.magicento.MagicentoSettings"/>
+        <!--<weigher key="completion" implementationClass="com.magicento.extensions.MagicentoPhpWeigher" id="magicentoPhpWeigher" />-->
+        <!--<gotoSymbolContributor implementation="" id="magicentoFactoryGotoSymbolContributor" />-->
+        <documentationProvider implementation="com.magicento.extensions.MagicentoXmlDocumentationProvider"
+                               id="magicentoConfigXmlDocumentation"/>
+        <gotoDeclarationHandler implementation="com.magicento.extensions.MagicentoGotoDeclarationHandler"/>
+
+        <fileTemplateGroup implementation="com.magicento.extensions.MagicentoTemplateFactory"/>
+
+        <spellchecker.bundledDictionaryProvider implementation="com.magicento.extensions.MagicentoDictionaryProvider"/>
+
+        <php.typeProvider implementation="com.magicento.extensions.FactoryTypeProvider"/>
+        <php.typeProvider implementation="com.magicento.extensions.BlockTypeProvider"/>
+
+        <!--We are doing this inside completion.contributor but maybe is beeter to do it with this refenrece contributor (it will add automatic support for the gotoDeclaration too  -->
+        <!--<psi.referenceContributor implementation="com.magicento.extensions.FactoryReferenceContributor"/>-->
+
+    </extensions>
+</idea-plugin>
