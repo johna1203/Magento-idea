@@ -11,7 +11,7 @@
     <depends>com.jetbrains.php</depends>
     <depends>com.intellij.modules.platform</depends>
 
-    <version>0.9.1</version>
+    <version>0.9.2</version>
 
     <change-notes>
         <![CDATA[
@@ -36,7 +36,7 @@
 
     <actions>
         <!-- Add your actions here -->
-        <action id="MagicentoAction" class="com.magicento.MagicentoAction" text="Magicento"
+        <action id="MagicentoAction" class="com.magicento.MagicentoAction" text="Magento-idea"
                 description="Magento magic global and context aware action">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
             <keyboard-shortcut keymap="$default" first-keystroke="alt M"/>
@@ -113,8 +113,8 @@
 
         <spellchecker.bundledDictionaryProvider implementation="com.magicento.extensions.MagicentoDictionaryProvider"/>
 
-        <php.typeProvider implementation="com.magicento.extensions.FactoryTypeProvider"/>
-        <php.typeProvider implementation="com.magicento.extensions.BlockTypeProvider"/>
+        <!--<php.typeProvider implementation="com.magicento.extensions.FactoryTypeProvider"/>-->
+        <!--<php.typeProvider implementation="com.magicento.extensions.BlockTypeProvider"/>-->
 
         <!--We are doing this inside completion.contributor but maybe is beeter to do it with this refenrece contributor (it will add automatic support for the gotoDeclaration too  -->
         <!--<psi.referenceContributor implementation="com.magicento.extensions.FactoryReferenceContributor"/>-->

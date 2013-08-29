@@ -19,22 +19,22 @@ import java.util.List;
 
 /**
  * General magicento action for Alt+M (Option+M)
+ *
  * @author Enrique Piatti
  */
 public class MagicentoAction extends MagicentoActionAbstract implements IMagicentoAction {
 
-    public void executeAction()
-    {
+    public void executeAction() {
         DefaultActionGroup actionGroup = new DefaultActionGroup();
         //SimpleActionGroup actionGroup = new SimpleActionGroup();
         List<AnAction> actions = _getMagentoContextActions();
-        if( actions.size() > 0){
+        if (actions.size() > 0) {
             for (AnAction action : actions) {
                 actionGroup.add(action);
             }
             final ListPopup popup =
                     JBPopupFactory.getInstance().createActionGroupPopup(
-                            "Magicento Actions",
+                            "Magento-Idea Actions",
                             actionGroup,
                             getDataContext(),
                             JBPopupFactory.ActionSelectionAid.SPEEDSEARCH,
@@ -47,10 +47,10 @@ public class MagicentoAction extends MagicentoActionAbstract implements IMagicen
 
     /**
      * Define MagicentoActions to be listed when using Alt+M (Option+M)
+     *
      * @return
      */
-    protected List<AnAction> _getMagentoContextActions()
-    {
+    protected List<AnAction> _getMagentoContextActions() {
         List<AnAction> actions = new ArrayList<AnAction>();
         String[] actionIds = {
                 "AddTranslation",
@@ -80,7 +80,7 @@ public class MagicentoAction extends MagicentoActionAbstract implements IMagicen
         ActionManager actionManager = ActionManagerImpl.getInstance();
         for (String actionId : actionIds) {
             AnAction action = actionManager.getAction(actionId);
-            if( ((IMagicentoAction)action).isApplicable(getEvent()) ) {
+            if (((IMagicentoAction) action).isApplicable(getEvent())) {
                 actions.add(action);
             }
         }
@@ -113,8 +113,7 @@ public class MagicentoAction extends MagicentoActionAbstract implements IMagicen
         //e.getPresentation().setEnabled(e.getDataContext().getData(DataConstants.EDITOR) != null);
     }
 
-    public Boolean isApplicable(AnActionEvent e)
-    {
+    public Boolean isApplicable(AnActionEvent e) {
         return true;
     }
 }
